@@ -18,6 +18,24 @@
             );
 
             document.body.appendChild(app.view);
+            //player object
+            player=new PIXI.Sprite.from('https://picsum.photos/200/300');
+            player.anchor.set(0.5); //anchor center
+            player.x=app.view.width/2;
+            player.y=app.view.height/2;
+            app.stage.addChild(player);
+            
+            //mouse interactions
+
+            app.stage.interactive=true;
+            app.stage.on("pointermove",movePlayer);
+
+
+        }
+        function movePlayer(e){
+            let pos=e.data.global;
+            player.x=pos.x;
+            player.y=pos.y;
         }
     </script>
 </head>
